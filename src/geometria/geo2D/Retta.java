@@ -59,15 +59,12 @@ public class Retta {
         }
     }
 
-    // Metodo per stampare l'equazione della retta in forma y = mx + b
+    // Restituisce la Retta sotto forma di equazione y = mx + b
     public String toString() {
         double pendenza = getM();
         double intercettaY = getQ();
-
-        if (pendenza==0) return ("y = " + intercettaY);                 // Caso retta orizzontale
-                
+        if (pendenza==0) return ("y = " + intercettaY);                 // Caso retta orizzontale   
         if (pendenza==Double.POSITIVE_INFINITY) return ("x = " + x1);   // Caso retta verticale
-  
         return ("y = " + pendenza + "x + " + intercettaY);              //tutti gli altri casi
     }
 }

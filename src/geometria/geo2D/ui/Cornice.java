@@ -3,11 +3,13 @@ package geometria.geo2D.ui;
 //librerie del progetto
 import geometria.geo2D.Punto;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 
 //Cornice (di tipo JFrame) contiene la "tela" (Canvas o JPanel) su cui disegnerò
-public class Cornice extends JFrame {
+public class Cornice extends JFrame{
 	public Cornice(ArrayList<Punto> punti, double max) {
 		super();
 		//cosa fare se premo la X, in questo caso chiudo l'applocazione EXIT_ON_CLOSE
@@ -22,5 +24,12 @@ public class Cornice extends JFrame {
 		getContentPane().add(postIt);
 		//compatto il frame per occupare giusto lo spazio necessario ai contenuti
 		this.pack();
-	}
+		this.addComponentListener(new ComponentAdapter() {
+            public void componentResized(ComponentEvent e) {
+                // This is only called when the user releases the mouse button.
+                System.out.println("componentResized");
+				e.getComponent().repaint();
+            }
+        });
+    }
 }
